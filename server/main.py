@@ -7,11 +7,11 @@ from routes import user_routes, mood_routes, mood_tag_routes, journal_routes, go
 
 load_dotenv()
 app = FastAPI()
-
+ALLOWED_ORIGIN = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[ALLOWED_ORIGIN],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
