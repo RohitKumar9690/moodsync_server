@@ -6,7 +6,6 @@ from db.database import engine, Base
 from routes import user_routes, mood_routes, mood_tag_routes, journal_routes, goal_routes, habit_routes
 
 load_dotenv()
-PORT = os.getenv("PORT")
 app = FastAPI()
 
 # CORS
@@ -38,5 +37,6 @@ async def root():
     return {"message": "Hello, World!"}
 
 if __name__ == "__main__":
-   uvicorn.run("main:app", host="0.0.0.0", port=PORT, reload=True)
-
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
