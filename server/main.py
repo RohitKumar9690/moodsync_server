@@ -17,12 +17,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# DB setup
-try:
-    Base.metadata.create_all(bind=engine)
-    print("✅ Database tables created successfully")
-except Exception as e:
-    print("❌ Error creating tables:", e)
+# Moved to startup event
+@app.on_event("startup")
+async def startup_event():
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("✅ Database tables created successfully")
+    except Exception as e:
+        print("❌ Error creating tables:", e)
 
 # Routers
 app.include_router(user_routes.router, prefix="/users", tags=["Users"])
