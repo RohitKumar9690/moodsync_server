@@ -11,9 +11,9 @@ from fastapi.security import OAuth2PasswordBearer
 load_dotenv()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/login")
 
-SECRET_KEY = os.getenv("SECRET_KEY", "hvchfvhfj")
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_TIME = int(os.getenv("TIME", "30")) 
+ACCESS_TOKEN_EXPIRE_TIME = int(os.getenv("TIME")) 
 
 # print("🔐 SECRET KEY:", SECRET_KEY)
 
