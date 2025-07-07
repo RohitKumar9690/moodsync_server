@@ -7,6 +7,7 @@ load_dotenv()
 
 # 👇 Make sure this has ?sslmode=require at the end
 DATABASE_URL = os.getenv("DATABASE")
+print(DATABASE_URL);
 
 # ✅ Correct engine config for PostgreSQL with SSL
 engine = create_engine(
